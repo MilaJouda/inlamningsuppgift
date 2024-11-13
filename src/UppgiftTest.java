@@ -25,27 +25,8 @@ public class UppgiftTest {
     public void testAddEmptyLine() {
         Uppgift uppgift = new Uppgift();
         uppgift.addLine("");
-        uppgift.addLine("Hello");
-        assertEquals(5, uppgift.getTotalCharacters());
-        assertEquals(2, uppgift.getTotalLines());
+        assertEquals(0, uppgift.getTotalCharacters());
+        assertEquals(1, uppgift.getTotalLines());
     }
 
 }
-
-
-
-
-
-
-
-   // @Test
-   // public void testAddCountShortLines() {
-      // Uppgift uppgift = new Uppgift();
-       // uppgift.addLine("Hej");
-       // uppgift.addLine("på");
-      //  uppgift.addLine("Dig");
-       // assertEquals(8, uppgift.getTotalCharacters());
-       // assertEquals(3, uppgift.getTotalLines());
-  //  }
-
-//}
