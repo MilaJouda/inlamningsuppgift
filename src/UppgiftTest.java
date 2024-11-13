@@ -28,8 +28,8 @@ public class UppgiftTest {
         uppgift.addLine("Hello");
         assertEquals(5, uppgift.getTotalCharacters());
         assertEquals(2, uppgift.getTotalLines());
-
     }
+
 }
 
 
