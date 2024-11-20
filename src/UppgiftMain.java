@@ -14,7 +14,7 @@ public class UppgiftMain {
             if (uppgift.checkForStop(input)){
                 break;
             }
-            uppgift.addLine(input);
+            uppgift.readLine(input);
         }
 
         System.out.println("Antal tecken (inklusive mellanslag): " + uppgift.getTotalCharacters());

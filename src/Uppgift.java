@@ -10,7 +10,7 @@ public class Uppgift {
     public Uppgift() {
     }
 
-    public void addLine(String line) {
+    public void readLine(String line) {
         totalCharacters += line.length();
         totalLines++;
 

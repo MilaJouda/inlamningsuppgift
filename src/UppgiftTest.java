@@ -1,58 +1,67 @@
 import org.junit.Test;
-import java.util.List;
-
+import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
-
 
 public class UppgiftTest {
 
     @Test
-    public void testAddLineCountCharacters() {
+    public void testReadLineCountCharacters() {
         Uppgift uppgift = new Uppgift();
-        uppgift.addLine("Hello World");
+        uppgift.readLine("Hello World");
         assertEquals(11, uppgift.getTotalCharacters());
     }
 
     @Test
-    public void testAddLineCountLines() {
+    public void testReadLineCountLines() {
         Uppgift uppgift = new Uppgift();
-        uppgift.addLine("Hello");
-        uppgift.addLine("World");
+        uppgift.readLine("Hello");
+        uppgift.readLine("World");
         assertEquals(2, uppgift.getTotalLines());
     }
 
     @Test
-    public void testAddEmptyLine() {
+    public void testReadEmptyLine() {
         Uppgift uppgift = new Uppgift();
-        uppgift.addLine("");
+        uppgift.readLine("");
         assertEquals(0, uppgift.getTotalCharacters());
         assertEquals(1, uppgift.getTotalLines());
     }
 
     @Test
-    public void testAddLineCountWords() {
+    public void testReadLineCountWords() {
         Uppgift uppgift = new Uppgift();
-        uppgift.addLine("Hello Kitty");
+        uppgift.readLine("Hello Kitty");
         assertEquals(2, uppgift.getTotalWords());
     }
 
     @Test
-    public void testAddLineLongestWord(){
+    public void testReadLineLongestWord(){
         Uppgift uppgift = new Uppgift();
-        uppgift.addLine("Java is a programming language");
-        uppgift.addLine("Hello");
-        assertEquals(List.of("programming"), uppgift.getLongestWordList());
+        uppgift.readLine("Java is a programming language");
+        uppgift.readLine("Hello");
+        assertTrue(uppgift.getLongestWordList().contains("programming"));
+        assertEquals(1, uppgift.getLongestWordList().size());
+    }
+
+    @Test
+    public void testReadLineLongestWords() {
+        Uppgift uppgift = new Uppgift();
+        uppgift.readLine("Hello World");
+        ArrayList<String> expectedLongestWords = new ArrayList<>();
+        expectedLongestWords.add("Hello");
+        expectedLongestWords.add("World");
+        assertEquals(expectedLongestWords, uppgift.getLongestWordList());
     }
 
    @Test
-    public void testCheckForStop(){
+    public void testCheckForStopReturnsTrue(){
         Uppgift uppgift = new Uppgift();
         assertTrue(uppgift.checkForStop("stop"));
    }
 
     @Test
-    public void testCheckForNoStop(){
+    public void testCheckForStopReturnsFalse(){
         Uppgift uppgift = new Uppgift();
-        assertFalse(uppgift.checkForStop("Hi"));
+        assertFalse(uppgift.checkForStop("Hello World"));
     }
 }
