@@ -1,39 +1,54 @@
-public class Uppgift {
+import java.util.ArrayList;
 
+public class Uppgift {
     private int totalCharacters = 0;
     private int totalLines = 0;
+    private int totalWords = 0;
+    private String longestWord = "";
+    private final ArrayList<String> longestWordList = new ArrayList<String>();
 
     public Uppgift() {
-       // totalCharacters = 0;
-        //totalLines = 0;
     }
 
-    public void addLine(String line) {
+    public void readLine(String line) {
         totalCharacters += line.length();
         totalLines++;
-        //System.out.println("Tecken hittills:" + totalCharacters + ",Rader hittills:" +totalLines);
+
+        String[] words = line.split(" ");
+        totalWords += words.length;
+        for (String word : words) {
+            if (word.length() > longestWord.length()) {
+                longestWord = word;
+                // Clear list if word is longer than all words in array
+                longestWordList.clear();
+                longestWordList.add(word);
+            } else if (word.length() == longestWord.length()) {
+                longestWordList.add(word);
+            }
+        }
     }
 
-    // Getter metod
+    public boolean checkForStop(String line) {
+        return line.equalsIgnoreCase("stop");
+    }
+
+    // Getter method
     public int getTotalCharacters() {
         return totalCharacters;
     }
-
-    //public void setTotalCharacters(int characters) {
-    //if (characters >= 0) {
-    //this.totalCharacters = characters;
-    //}
 
     public int getTotalLines() {
         return totalLines;
     }
 
-    //public void setTotalLines(int lines) {
-    // if (lines >= 0) {
-    // this.totalLines = lines;
-    // }
-}
+    public int getTotalWords() {
+        return totalWords;
+    }
 
+    public ArrayList<String> getLongestWordList() {
+        return longestWordList;
+    }
+}
 
 
 
