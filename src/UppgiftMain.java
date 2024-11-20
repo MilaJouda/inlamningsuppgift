@@ -7,12 +7,22 @@ public class UppgiftMain {
         Uppgift uppgift = new Uppgift();
         String input;
 
-       uppgift.readLines();
+        System.out.println("Skriv in text eller 'stop' för att avsluta");
+
+        while (true) {
+            input = scanner.nextLine();
+            if (uppgift.checkForStop(input)){
+                break;
+            }
+            uppgift.addLine(input);
+        }
 
         System.out.println("Antal tecken (inklusive mellanslag): " + uppgift.getTotalCharacters());
         System.out.println("Antal rader: " + uppgift.getTotalLines());
         System.out.println("Antal ord: " + uppgift.getTotalWords());
         System.out.println("Längsta ordet: " + uppgift.getLongestWordList());
+
+        scanner.close();
     }
 }
 

@@ -1,8 +1,7 @@
 import org.junit.Test;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class UppgiftTest {
@@ -46,11 +45,14 @@ public class UppgiftTest {
     }
 
    @Test
-    public void testAddLineCountLinesExcludingStop(){
+    public void testCheckForStop(){
         Uppgift uppgift = new Uppgift();
-        uppgift.addLine("Cats are amazing");
-        uppgift.addLine("I love coding");
-        uppgift.addLine("stop");
-       assertEquals(2,uppgift.getTotalLines());
+        assertTrue(uppgift.checkForStop("stop"));
    }
+
+    @Test
+    public void testCheckForNoStop(){
+        Uppgift uppgift = new Uppgift();
+        assertFalse(uppgift.checkForStop("Hi"));
+    }
 }

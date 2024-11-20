@@ -1,35 +1,16 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Uppgift {
-
     private int totalCharacters = 0;
     private int totalLines = 0;
     private int totalWords = 0;
     private String longestWord = "";
     private final ArrayList<String> longestWordList = new ArrayList<String>();
 
-    public Uppgift() {}
-
-    public void readLines() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(" Skriv in text eller 'stop' för att avsluta");
-
-        while (true) {
-            String line = scanner.nextLine();
-            if (line.equalsIgnoreCase("stop")) {
-                break;
-            }
-            addLine(line);
-        }
-        scanner.close();
+    public Uppgift() {
     }
 
     public void addLine(String line) {
-        if (line.equalsIgnoreCase("stop")) {
-            return; // Ignorera "stop"
-        }
-
         totalCharacters += line.length();
         totalLines++;
 
@@ -45,6 +26,10 @@ public class Uppgift {
                 longestWordList.add(word);
             }
         }
+    }
+
+    public boolean checkForStop(String line) {
+        return line.equalsIgnoreCase("stop");
     }
 
     // Getter method
