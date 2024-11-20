@@ -7,43 +7,15 @@ public class UppgiftMain {
         Uppgift uppgift = new Uppgift();
         String input;
 
-        System.out.println("Skriv in en rad text eller 'stop' för att avsluta");
+       uppgift.readLines();
 
-        while (true) {
-            input = scanner.nextLine();
-            if (input.equalsIgnoreCase("stop")) {
-                break;
-            }
-            uppgift.addLine(input);
-        }
-
-        System.out.println("Antal tecken  :" + uppgift.getTotalCharacters());
-        System.out.println("Antal rader :" + uppgift.getTotalLines());
-
-        scanner.close();
+        System.out.println("Antal tecken (inklusive mellanslag): " + uppgift.getTotalCharacters());
+        System.out.println("Antal rader: " + uppgift.getTotalLines());
+        System.out.println("Antal ord: " + uppgift.getTotalWords());
+        System.out.println("Längsta ordet: " + uppgift.getLongestWordList());
     }
 }
 
 
 
 
-        /*System.out.println("Skriv in antal rad test eller 'stop' för att avsluta:");
-        while (true) {
-            String input = scanner.nextLine();
-            if (input.equalsIgnoreCase("stop")) {
-                break;
-            }
-            totalCharacters += input.length();
-            totalLines++;
-            String[] words = input.split(" ");
-            uppgift.addLine(input);
-
-        }
-        System.out.println(" Antal tecken :" + totalCharacters);
-        System.out.println("Antal rader :" + totalLines);
-
-        System.out.println("Antal ord :" + totalWords);
-        scanner.close();
-
-    }
-}*/
